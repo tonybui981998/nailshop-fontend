@@ -1,17 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetMenu, handleGetTotalPrice } from "../../../Redux/counterSlide";
+import {
+  fetMenu,
+  handleClientTotalTimeService,
+  handleGetTotalPrice,
+} from "../../../Redux/counterSlide";
 import { CiCirclePlus } from "react-icons/ci";
 import { CiCircleMinus } from "react-icons/ci";
 import { SlLocationPin } from "react-icons/sl";
 import { handleSelectService } from "../../../Redux/counterSlide";
+import { useNavigate } from "react-router-dom";
+
+import { toast } from "react-toastify";
 
 import "./BookingMenuOption.scss";
 const BookingMenuOption = () => {
+  const navigate = useNavigate();
   // get data from redux
-  const { allMenu, clientSelectService, clientTotalPrice } = useSelector(
-    (state) => state.counter
-  );
+  const {
+    allMenu,
+    clientSelectService,
+    clientTotalPrice,
+    clientTotalTimeService,
+  } = useSelector((state) => state.counter);
   const dispatch = useDispatch();
   const [activeTitle, setActiveTitle] = useState(null);
 
@@ -19,6 +30,21 @@ const BookingMenuOption = () => {
   const displayService = (Id) => {
     setActiveTitle((prevId) => (prevId === Id ? null : Id));
   };
+  // validaion
+  const validationService = () => {
+    console.log("hello");
+    if (clientSelectService.length === 0) {
+      toast.warn("Please select any service to continue");
+    } else {
+      navigate("/5-start-nail-booking-menu/select-staff");
+    }
+  };
+  // get total time of selected service
+  useEffect(() => {
+    if (clientSelectService) {
+      dispatch(handleClientTotalTimeService());
+    }
+  }, [dispatch, clientSelectService]);
 
   useEffect(() => {
     dispatch(fetMenu());
@@ -105,10 +131,13 @@ const BookingMenuOption = () => {
         </div>
         <div className="line"></div>
         <div className="client-Service">
+          <div className="total-price" style={{ marginBottom: "15px" }}>
+            Total Time: {clientTotalTimeService} mins
+          </div>
           <span className="total-price">Total Price:</span> ${clientTotalPrice}
         </div>
         <div className="button">
-          <button>Continue</button>
+          <button onClick={() => validationService()}>Continue</button>
         </div>
       </div>
     </div>

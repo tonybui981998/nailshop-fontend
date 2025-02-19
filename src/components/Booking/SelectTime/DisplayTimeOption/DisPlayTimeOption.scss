@@ -1,0 +1,38 @@
+.timeOption {
+  display: flex;
+  //border: 1px solid red;
+  width: 50%;
+  justify-content: space-between;
+  margin-top: 30px;
+  .option-left {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: 1px solid rgb(214, 206, 206);
+    border-radius: 50px;
+    width: 300px;
+    .left-image {
+      //  border: 1px solid black;
+      //  border-radius: 60px;
+      img {
+        //  border: 1px solid black;
+        border-radius: 60px;
+        width: 70px;
+        height: 60px;
+        margin: 10px 0 10px 10px;
+      }
+    }
+    .fullname {
+      //  border: 1px solid red;
+      font-size: 21px;
+      font-weight: 550;
+      margin-right: 35px;
+    }
+    .icon {
+      font-size: 25px;
+    }
+  }
+  .option-right {
+    cursor: pointer !important;
+  }
+}

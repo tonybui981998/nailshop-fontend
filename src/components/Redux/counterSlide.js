@@ -1,8 +1,15 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getMenu } from "../Services/ServiceApi";
+import { getAllStaff, getMenu } from "../Services/ServiceApi";
+
+// get all menu
 export const fetMenu = createAsyncThunk("counter/fetMenu", async () => {
   const getData = await getMenu();
   return getData;
+});
+// get all staff
+export const fetStaff = createAsyncThunk("counter/fetStaff", async () => {
+  const getStaff = await getAllStaff();
+  return getStaff;
 });
 const counterSlice = createSlice({
   name: "counter",
@@ -12,6 +19,11 @@ const counterSlice = createSlice({
     allMenu: [],
     clientSelectService: [],
     clientTotalPrice: 0,
+    allStaffs: [],
+    staffSchedules: [],
+    clientSelectStaff: [],
+    clientSelectDate: [],
+    clientTotalTimeService: [],
   },
   reducers: {
     handleSelectService: (state, action) => {
@@ -33,6 +45,26 @@ const counterSlice = createSlice({
         0
       );
     },
+    handleGetStaffWorkingDay: (state) => {
+      const getCurrentday = new Date().toLocaleDateString("en-US", {
+        weekday: "long",
+      });
+      state.staffSchedules = state.allStaffs.filter((staff) =>
+        staff.staffScheduleDtos.some((s) => s.dayOfWeek === getCurrentday)
+      );
+    },
+    handleClientSelectStaff: (state, action) => {
+      state.clientSelectStaff = action.payload;
+    },
+    handleClientSelectDate: (state, action) => {
+      state.clientSelectDate = action.payload;
+    },
+    handleClientTotalTimeService: (state) => {
+      state.clientTotalTimeService = state.clientSelectService.reduce(
+        (total, time) => total + Number(time.duration),
+        0
+      );
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -47,10 +79,28 @@ const counterSlice = createSlice({
       .addCase(fetMenu.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
+      })
+      .addCase(fetStaff.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetStaff.fulfilled, (state, action) => {
+        state.loading = false;
+        state.allStaffs = action.payload;
+      })
+      .addCase(fetStaff.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
       });
   },
 });
 
-export const { handleSelectService, handleGetTotalPrice } =
-  counterSlice.actions;
+export const {
+  handleSelectService,
+  handleGetTotalPrice,
+  handleGetStaffWorkingDay,
+  handleClientSelectStaff,
+  handleClientSelectDate,
+  handleClientTotalTimeService,
+} = counterSlice.actions;
 export default counterSlice.reducer;

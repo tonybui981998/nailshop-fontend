@@ -1,0 +1,378 @@
+.referStaff {
+  display: flex;
+  width: 70%;
+  margin: auto;
+  justify-content: space-between;
+  height: fit-content;
+  .left-side {
+    width: 40%;
+    margin-top: 60px;
+    .refer-main {
+      border: 1px solid rgb(219, 208, 208);
+      width: 300px;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      padding: 25px 0 25px 10px;
+      cursor: pointer;
+      img {
+        width: 90px;
+        height: 75px;
+        border: 1px solid rgb(219, 208, 208);
+        border-radius: 60px;
+      }
+      .staff-name {
+        margin-left: 20px;
+        font-size: 20px;
+        font-weight: 600;
+      }
+    }
+    .addbackground {
+      border: 3px solid blue;
+    }
+  }
+  .right-side {
+    margin-top: 60px;
+    width: 60%;
+    border: 1px solid rgb(219, 208, 208);
+    background: #f8f8f8;
+    .message {
+      width: 90%;
+      margin-left: 10px;
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    .location {
+      margin-left: 10px;
+      margin-top: 30px;
+      border: 1px solid rgb(219, 208, 208);
+      width: fit-content;
+      padding: 15px;
+      font-size: 20px;
+      margin-bottom: 20px;
+      background-color: white;
+
+      span {
+        color: red;
+      }
+    }
+    .line {
+      border: 1px solid rgb(219, 208, 208);
+    }
+    .client-Service {
+      padding: 10px;
+      font-size: 18px;
+      margin-top: 15px;
+      margin-bottom: 15px;
+
+      .chooseStaff {
+        margin-bottom: 10px;
+      }
+    }
+    .button {
+      justify-content: center;
+      // border: 1px solid red;
+      margin-left: 10px;
+      button {
+        width: 150px;
+        height: 50px;
+        border-radius: 20px;
+        background-color: transparent;
+        font-size: 16px;
+
+        &:hover {
+          background-color: white;
+        }
+      }
+    }
+  }
+}
+
+//1160
+@media (max-width: 1160px) {
+  .referStaff {
+    display: flex;
+    width: 90%;
+    margin: auto;
+    justify-content: space-between;
+    height: fit-content;
+    .left-side {
+      width: 40%;
+      margin-top: 60px;
+      .refer-main {
+        border: 1px solid rgb(219, 208, 208);
+        width: 300px;
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        padding: 25px 0 25px 10px;
+        cursor: pointer;
+        img {
+          width: 90px;
+          height: 75px;
+          border: 1px solid rgb(219, 208, 208);
+          border-radius: 60px;
+        }
+        .staff-name {
+          margin-left: 20px;
+          font-size: 20px;
+          font-weight: 600;
+        }
+      }
+      .addbackground {
+        border: 3px solid blue;
+      }
+    }
+    .right-side {
+      margin-top: 60px;
+      width: 60%;
+      border: 1px solid rgb(219, 208, 208);
+      background: #f8f8f8;
+      .message {
+        width: 90%;
+        margin-left: 10px;
+        margin-top: 20px;
+        font-size: 18px;
+      }
+      .location {
+        margin-left: 10px;
+        margin-top: 30px;
+        border: 1px solid rgb(219, 208, 208);
+        width: fit-content;
+        padding: 15px;
+        font-size: 20px;
+        margin-bottom: 20px;
+        background-color: white;
+
+        span {
+          color: red;
+        }
+      }
+      .line {
+        border: 1px solid rgb(219, 208, 208);
+      }
+      .client-Service {
+        padding: 10px;
+        font-size: 18px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+
+        .chooseStaff {
+          margin-bottom: 10px;
+        }
+      }
+      .button {
+        justify-content: center;
+        // border: 1px solid red;
+        margin-left: 10px;
+        button {
+          width: 150px;
+          height: 50px;
+          border-radius: 20px;
+          background-color: transparent;
+          font-size: 16px;
+
+          &:hover {
+            background-color: white;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 980
+@media (max-width: 980px) {
+  .referStaff {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin: auto;
+    justify-content: space-between;
+    height: fit-content;
+    .left-side {
+      width: 90%;
+      margin: auto;
+      margin-top: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .refer-main {
+        border: 1px solid rgb(219, 208, 208);
+        margin-bottom: 30px;
+        width: 70%;
+        padding: 25px 0 25px 10px;
+        cursor: pointer;
+        img {
+          width: 90px;
+          height: 75px;
+          border: 1px solid rgb(219, 208, 208);
+          border-radius: 60px;
+        }
+        .staff-name {
+          margin-left: 20px;
+          font-size: 20px;
+          font-weight: 600;
+        }
+      }
+      .addbackground {
+        border: 3px solid blue;
+      }
+    }
+    .right-side {
+      margin-top: 30px;
+      width: 95%;
+      border: 1px solid rgb(219, 208, 208);
+      background: #f8f8f8;
+      margin: auto;
+      .message {
+        width: 90%;
+        margin-top: 20px;
+        font-size: 18px;
+      }
+      .location {
+        margin-left: 10px;
+        margin-top: 30px;
+        border: 1px solid rgb(219, 208, 208);
+        width: fit-content;
+        padding: 15px;
+        font-size: 20px;
+        margin-bottom: 20px;
+        background-color: white;
+
+        span {
+          color: red;
+        }
+      }
+      .line {
+        border: 1px solid rgb(219, 208, 208);
+      }
+      .client-Service {
+        padding: 10px;
+        font-size: 18px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+
+        .chooseStaff {
+          margin-bottom: 10px;
+        }
+      }
+      .button {
+        justify-content: center;
+        // border: 1px solid red;
+        margin-left: 10px;
+        margin-bottom: 20px;
+        button {
+          width: 150px;
+          height: 50px;
+          border-radius: 20px;
+          background-color: transparent;
+          font-size: 16px;
+
+          &:hover {
+            background-color: white;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 500
+@media (max-width: 500px) {
+  .referStaff {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin: auto;
+    justify-content: space-between;
+    height: fit-content;
+    .left-side {
+      width: 90%;
+      margin: auto;
+      margin-top: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .refer-main {
+        border: 1px solid rgb(219, 208, 208);
+        margin-bottom: 30px;
+        width: 95%;
+        padding: 25px 0 25px 10px;
+        cursor: pointer;
+        img {
+          width: 90px;
+          height: 75px;
+          border: 1px solid rgb(219, 208, 208);
+          border-radius: 60px;
+        }
+        .staff-name {
+          margin-left: 20px;
+          font-size: 20px;
+          font-weight: 600;
+        }
+      }
+      .addbackground {
+        border: 3px solid blue;
+      }
+    }
+    .right-side {
+      margin-top: 30px;
+      width: 95%;
+      border: 1px solid rgb(219, 208, 208);
+      background: #f8f8f8;
+      margin: auto;
+      .message {
+        width: 90%;
+        margin-top: 20px;
+        font-size: 18px;
+      }
+      .location {
+        margin-left: 10px;
+        margin-top: 30px;
+        border: 1px solid rgb(219, 208, 208);
+        width: fit-content;
+        padding: 15px;
+        font-size: 20px;
+        margin-bottom: 20px;
+        background-color: white;
+
+        span {
+          color: red;
+        }
+      }
+      .line {
+        border: 1px solid rgb(219, 208, 208);
+      }
+      .client-Service {
+        padding: 10px;
+        font-size: 18px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+
+        .chooseStaff {
+          margin-bottom: 10px;
+        }
+      }
+      .button {
+        justify-content: center;
+        // border: 1px solid red;
+        margin-left: 10px;
+        margin-bottom: 20px;
+        button {
+          width: 150px;
+          height: 50px;
+          border-radius: 20px;
+          background-color: transparent;
+          font-size: 16px;
+
+          &:hover {
+            background-color: white;
+          }
+        }
+      }
+    }
+  }
+}
