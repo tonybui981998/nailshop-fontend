@@ -7,6 +7,7 @@ import "./App.css";
 import { ToastContainer } from "react-toastify";
 import BookingSelectStaff from "./components/pages/BookinPage/BookingSelectStaff";
 import SelectTimePage from "./components/pages/BookinPage/SelectTimePage";
+import BookingConfirmation from "./components/pages/BookinPage/BookingConfirmation";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             path="/5-start-nail-booking-menu/select-staff/select-time"
             element={<SelectTimePage />}
           />
+          <Route path="/Booking-confirm" element={<BookingConfirmation />} />
         </Routes>
       </Router>
       <ToastContainer

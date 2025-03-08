@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getAllStaff, getMenu } from "../Services/ServiceApi";
+import dayjs from "dayjs";
+import { format } from "date-fns";
 
 // get all menu
 export const fetMenu = createAsyncThunk("counter/fetMenu", async () => {
@@ -22,8 +24,11 @@ const counterSlice = createSlice({
     allStaffs: [],
     staffSchedules: [],
     clientSelectStaff: [],
-    clientSelectDate: [],
+    clientSelectDate: null,
     clientTotalTimeService: [],
+    StaffTimeSlot: [],
+    clientPickingStartTime: null,
+    serviceEndTime: null,
   },
   reducers: {
     handleSelectService: (state, action) => {
@@ -53,17 +58,73 @@ const counterSlice = createSlice({
         staff.staffScheduleDtos.some((s) => s.dayOfWeek === getCurrentday)
       );
     },
+    // client select future date
+    handleClientSelectDayStaff: (state, action) => {
+      const getCurrentday = dayjs(action.payload);
+      const selectedDay = getCurrentday.format("dddd");
+      state.staffSchedules = state.allStaffs.filter((staff) =>
+        staff.staffScheduleDtos.some((s) => s.dayOfWeek === selectedDay)
+      );
+    },
     handleClientSelectStaff: (state, action) => {
       state.clientSelectStaff = action.payload;
     },
     handleClientSelectDate: (state, action) => {
       state.clientSelectDate = action.payload;
     },
+
     handleClientTotalTimeService: (state) => {
       state.clientTotalTimeService = state.clientSelectService.reduce(
         (total, time) => total + Number(time.duration),
         0
       );
+    },
+    // generate time slot
+    handleGenerateTimeSlot: (state) => {
+      if (!state.clientSelectDate || !state.clientSelectStaff) {
+        console.log("missing");
+        return;
+      }
+
+      const selectedDate = dayjs(state.clientSelectDate).format("dddd");
+      console.log("check date", selectedDate);
+      const checkStaffWorkingDay =
+        state.clientSelectStaff.staffScheduleDtos.find(
+          (s) => s.dayOfWeek === selectedDate
+        );
+      if (!checkStaffWorkingDay) {
+        state.StaffTimeSlot = [];
+        console.log("sorry no staff working dya");
+        return;
+      }
+      const startHour = parseInt(
+        checkStaffWorkingDay.startTime.split(":")[0],
+        10
+      );
+      const endHours = parseInt(checkStaffWorkingDay.endTime.split(";")[0], 10);
+
+      let getCurrentTIme = dayjs().hour(startHour).minute(0);
+
+      const timeSlot = [];
+      while (getCurrentTIme.hour() < endHours) {
+        timeSlot.push(getCurrentTIme.format("HH:mm"));
+        getCurrentTIme = getCurrentTIme.add(15, "minute");
+      }
+      state.StaffTimeSlot = timeSlot;
+    },
+    handleClientPickingTime: (state, action) => {
+      state.clientPickingStartTime = action.payload;
+      const [hour, minute] = state.clientPickingStartTime
+        .split(":")
+        .map(Number);
+      const startTime = hour * 60 + minute;
+      const getEdingTime = startTime + state.clientTotalTimeService;
+      const convertTohour = dayjs()
+        .startOf("day")
+        .add(getEdingTime, "minute")
+        .format("HH:mm");
+
+      state.serviceEndTime = convertTohour;
     },
   },
   extraReducers: (builder) => {
@@ -102,5 +163,8 @@ export const {
   handleClientSelectStaff,
   handleClientSelectDate,
   handleClientTotalTimeService,
+  handleGenerateTimeSlot,
+  handleClientSelectDayStaff,
+  handleClientPickingTime,
 } = counterSlice.actions;
 export default counterSlice.reducer;

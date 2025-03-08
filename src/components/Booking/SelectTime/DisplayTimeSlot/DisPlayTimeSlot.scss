@@ -1,0 +1,58 @@
+.displayTimeShot {
+  margin-top: 30px;
+  .make {
+    .displaytime {
+      border: 1px solid rgb(218, 213, 213);
+      margin-bottom: 20px;
+      height: 50px;
+      align-items: center;
+      display: flex;
+      cursor: pointer;
+      &:hover {
+        background-color: rgb(253, 248, 248);
+      }
+      .time-display {
+        margin-left: 20px;
+        font-size: 18px;
+        font-weight: 550;
+      }
+    }
+    .background {
+      background-color: rgb(253, 248, 248);
+    }
+  }
+}
+@media (max-width: 1365px) {
+  .displayTimeShot {
+    margin-top: 45px;
+    display: flex;
+    .make {
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: 20px;
+      margin-bottom: -100px;
+
+      .displaytime {
+        border: 1px solid rgb(218, 213, 213);
+        margin-bottom: 20px;
+        height: 65px;
+        width: 80px;
+        border-radius: 60px;
+        margin-left: 45px;
+        margin-bottom: 30px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: rgb(253, 248, 248);
+        }
+        .time-display {
+          font-size: 18px;
+          font-weight: 550;
+        }
+      }
+      .background {
+        background-color: rgb(253, 248, 248);
+      }
+    }
+  }
+}
