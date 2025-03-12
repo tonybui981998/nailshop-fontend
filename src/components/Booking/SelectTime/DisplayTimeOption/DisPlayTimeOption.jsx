@@ -20,6 +20,7 @@ const DisPlayTimeOption = ({
   clientPickTime,
   clientPickingStartTime,
   serviceEndTime,
+  allBookingTime,
 }) => {
   const formattedDate = clientSelectDate ? dayjs(clientSelectDate) : dayjs();
   // display model
@@ -79,6 +80,9 @@ const DisPlayTimeOption = ({
             clientPickTime={clientPickTime}
             clientPickingStartTime={clientPickingStartTime}
             serviceEndTime={serviceEndTime}
+            allBookingTime={allBookingTime}
+            clientSelectStaff={clientSelectStaff}
+            clientSelectDate={clientSelectDate}
           />
         </div>
       </div>

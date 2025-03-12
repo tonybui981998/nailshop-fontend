@@ -9,6 +9,7 @@ import {
   handleClientSelectStaff,
   handleGenerateTimeSlot,
   handleClientPickingTime,
+  fetBookingTime,
 } from "../../../Redux/counterSlide";
 
 //import DisPlayTimeSlot from "../DisplayTimeSlot/DisPlayTimeSlot";
@@ -25,6 +26,7 @@ const SelectTimeTable = () => {
     clientTotalPrice,
     clientPickingStartTime,
     serviceEndTime,
+    allBookingTime,
   } = useSelector((state) => state.counter);
   const dispatch = useDispatch();
   // select date
@@ -47,6 +49,9 @@ const SelectTimeTable = () => {
   useEffect(() => {
     dispatch(handleGenerateTimeSlot());
   }, [dispatch, clientSelectDate, clientSelectStaff]);
+  useEffect(() => {
+    dispatch(fetBookingTime());
+  }, []);
 
   return (
     <div className="SelectTimeTable">
@@ -62,6 +67,7 @@ const SelectTimeTable = () => {
         clientPickTime={clientPickTime}
         clientPickingStartTime={clientPickingStartTime}
         serviceEndTime={serviceEndTime}
+        allBookingTime={allBookingTime}
       />
       <DisPlayService
         clientSelectStaff={clientSelectStaff}

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getAllStaff, getMenu } from "../Services/ServiceApi";
+import { getAllStaff, getMenu, getBookingTime } from "../Services/ServiceApi";
 import dayjs from "dayjs";
 import { format } from "date-fns";
 
@@ -13,6 +13,15 @@ export const fetStaff = createAsyncThunk("counter/fetStaff", async () => {
   const getStaff = await getAllStaff();
   return getStaff;
 });
+
+// get all bookingTime
+export const fetBookingTime = createAsyncThunk(
+  "counter/fetBookingTime",
+  async () => {
+    const BookingTimes = await getBookingTime();
+    return BookingTimes;
+  }
+);
 const counterSlice = createSlice({
   name: "counter",
   initialState: {
@@ -29,6 +38,7 @@ const counterSlice = createSlice({
     StaffTimeSlot: [],
     clientPickingStartTime: null,
     serviceEndTime: null,
+    allBookingTime: [],
   },
   reducers: {
     handleSelectService: (state, action) => {
@@ -82,36 +92,68 @@ const counterSlice = createSlice({
     // generate time slot
     handleGenerateTimeSlot: (state) => {
       if (!state.clientSelectDate || !state.clientSelectStaff) {
-        console.log("missing");
+        console.log("missing date or staff selection");
         return;
       }
 
-      const selectedDate = dayjs(state.clientSelectDate).format("dddd");
-      console.log("check date", selectedDate);
+      // 🛑 Chuyển ngày khách chọn sang định dạng chuẩn YYYY-MM-DD để so sánh
+      const selectedDate = dayjs(state.clientSelectDate).format("YYYY-MM-DD");
+      console.log("Selected Date:", selectedDate);
+
+      // 🛑 Tìm ngày làm việc của nhân viên trong staffScheduleDtos
       const checkStaffWorkingDay =
         state.clientSelectStaff.staffScheduleDtos.find(
-          (s) => s.dayOfWeek === selectedDate
+          (s) => s.dayOfWeek === dayjs(state.clientSelectDate).format("dddd")
         );
+
       if (!checkStaffWorkingDay) {
         state.StaffTimeSlot = [];
-        console.log("sorry no staff working dya");
+        console.log("No working schedule found for this staff on this date.");
         return;
       }
+
+      // 🛑 Lấy giờ bắt đầu & kết thúc của nhân viên từ staffScheduleDtos
       const startHour = parseInt(
         checkStaffWorkingDay.startTime.split(":")[0],
         10
       );
-      const endHours = parseInt(checkStaffWorkingDay.endTime.split(";")[0], 10);
+      const endHour = parseInt(checkStaffWorkingDay.endTime.split(":")[0], 10); // Đổi dấu `;` thành `:`
 
-      let getCurrentTIme = dayjs().hour(startHour).minute(0);
-
+      // 🛑 Tạo danh sách slot thời gian 15 phút
+      let getCurrentTime = dayjs().hour(startHour).minute(0);
       const timeSlot = [];
-      while (getCurrentTIme.hour() < endHours) {
-        timeSlot.push(getCurrentTIme.format("HH:mm"));
-        getCurrentTIme = getCurrentTIme.add(15, "minute");
+
+      while (getCurrentTime.hour() < endHour) {
+        timeSlot.push(getCurrentTime.format("HH:mm"));
+        getCurrentTime = getCurrentTime.add(15, "minute");
       }
-      state.StaffTimeSlot = timeSlot;
+
+      console.log("Generated Time Slots:", timeSlot);
+
+      // 🛑 **Lọc danh sách booking từ database theo ngày & nhân viên**
+      const bookedSlots = state.allBookingTime
+        .filter(
+          (booking) =>
+            dayjs(booking.bookingDate).format("YYYY-MM-DD") === selectedDate &&
+            booking.staffId === state.clientSelectStaff.id
+        )
+        .map((booking) => ({
+          startTime: dayjs(booking.startTime, "HH:mm:ss").format("HH:mm"),
+          endTime: dayjs(booking.endTime, "HH:mm:ss").format("HH:mm"),
+        }));
+
+      console.log("Booked Slots:", bookedSlots);
+
+      // 🛑 **Loại bỏ các slot đã bị đặt trước**
+      state.StaffTimeSlot = timeSlot.filter((slot) => {
+        return !bookedSlots.some(
+          (booked) => slot >= booked.startTime && slot < booked.endTime
+        );
+      });
+
+      console.log("Available Slots:", state.StaffTimeSlot);
     },
+
     handleClientPickingTime: (state, action) => {
       state.clientPickingStartTime = action.payload;
       const [hour, minute] = state.clientPickingStartTime
@@ -150,6 +192,18 @@ const counterSlice = createSlice({
         state.allStaffs = action.payload;
       })
       .addCase(fetStaff.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(fetBookingTime.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetBookingTime.fulfilled, (state, action) => {
+        state.loading = false;
+        state.allBookingTime = action.payload;
+      })
+      .addCase(fetBookingTime.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });
