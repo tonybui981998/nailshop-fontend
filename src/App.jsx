@@ -8,12 +8,16 @@ import { ToastContainer } from "react-toastify";
 import BookingSelectStaff from "./components/pages/BookinPage/BookingSelectStaff";
 import SelectTimePage from "./components/pages/BookinPage/SelectTimePage";
 import BookingConfirmation from "./components/pages/BookinPage/BookingConfirmation";
+import HomePage from "./components/pages/HomePage/HomePage";
+import AboutUs from "./components/pages/AboutUsPage/AboutUs";
 
 function App() {
   return (
     <>
       <Router>
         <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutUs />} />
           <Route path="/5-start-nail-booking" element={<BookingOption />} />
           <Route
             path="/5-start-nail-booking-menu"

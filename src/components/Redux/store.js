@@ -14,6 +14,10 @@ const persistConfig = {
     "clientSelectStaff",
     "clientSelectDate",
     "clientTotalTimeService",
+    "allBookingTime",
+    "clientPickingStartTime",
+    "clientSelectDate",
+    "serviceEndTime",
   ],
 };
 const persistedReducer = persistReducer(persistConfig, counterReducer);
