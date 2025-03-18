@@ -19,6 +19,8 @@
     font-size: 23px;
     position: relative;
     cursor: pointer;
+    text-decoration: none;
+    color: black;
 
     &::after {
       content: "";
@@ -102,7 +104,7 @@
     margin-top: 15px;
   }
 }
-@media (max-width: 1000px) {
+@media (max-width: 1150px) {
   .menubar {
     position: fixed;
     display: block;
@@ -142,6 +144,59 @@
     .book {
       margin-top: 30px;
       margin-left: 30px;
+    }
+  }
+  .navBar.openMenu {
+    left: 0;
+  }
+
+  .line {
+    display: none;
+  }
+}
+
+// 700
+@media (max-width: 700px) {
+  .menubar {
+    position: fixed;
+    display: block;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    font-size: 25px;
+    margin-left: 30px;
+  }
+  .navBar {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    // margin-top: 30px;
+    width: 70%;
+    height: 100vh;
+    justify-content: flex-start;
+    align-items: flex-start;
+    top: 0;
+    left: -70%;
+    box-shadow: 2px 0 5px rgba(255, 253, 253, 0.5);
+    z-index: 1000;
+    transition: 1s ease-in-out;
+    background-color: black;
+    .logo {
+      font-size: 22px;
+      margin-left: 30px;
+      margin-top: 30px;
+      color: white;
+      border: 1px solid white;
+    }
+    .page {
+      font-size: 18px;
+      margin-top: 20px;
+      margin-left: 30px;
+      color: white;
+    }
+    .book {
+      margin-top: 30px;
+      margin-left: 30px;
+      font-size: 18px;
     }
   }
   .navBar.openMenu {

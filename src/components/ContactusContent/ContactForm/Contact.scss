@@ -1,0 +1,225 @@
+@font-face {
+  font-family: "SVN-Haptic Script";
+  src: url("/fonts/svn-haptic_scriptregular.woff2") format("woff2"),
+    url("/fonts/svn-haptic_scriptregular.woff") format("woff"),
+    url("/fonts/svn-haptic_scriptregular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.contact {
+  width: 70%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+  background-color: #fdf7f2;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
+  font-family: "SVN-Haptic Script", sans-serif;
+
+  .contact-main {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+
+    .title {
+      color: #daa785;
+      font-size: 36px;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    .title-1 {
+      margin-top: 8px;
+      font-size: 24px;
+      font-weight: 500;
+      color: #daa785;
+    }
+
+    .title-3 {
+      margin-top: 10px;
+      font-size: 18px;
+      color: #6b5f5b;
+      line-height: 1.6;
+    }
+
+    .address {
+      margin-top: 15px;
+      font-size: 18px;
+      color: #8c7a75;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+
+      svg {
+        font-size: 22px;
+        color: #daa785;
+      }
+
+      span {
+        font-weight: 500;
+        color: black;
+      }
+    }
+
+    .form {
+      margin-top: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding: 20px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+
+      .main-form {
+        input {
+          width: 100%;
+          padding: 12px;
+          font-size: 16px;
+          border: none;
+          border-bottom: 2px solid #b8a79f;
+          outline: none;
+          background: transparent;
+          transition: border 0.3s ease;
+
+          &:focus {
+            border-bottom: 2px solid #daa785;
+          }
+        }
+      }
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 14px 25px;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      background-color: #daa785;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0px 4px 8px rgba(218, 167, 133, 0.3);
+
+      &:hover {
+        background-color: #c78a66;
+        box-shadow: 0px 6px 12px rgba(218, 167, 133, 0.4);
+      }
+    }
+  }
+}
+@media (max-width: 1150px) {
+  .contact {
+    width: 70%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    background-color: #fdf7f2;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
+    font-family: "SVN-Haptic Script", sans-serif;
+
+    .contact-main {
+      width: 100%;
+      max-width: 600px;
+      text-align: center;
+
+      .title {
+        color: #daa785;
+        font-size: 36px;
+        font-weight: 600;
+        margin-top: 30px;
+      }
+
+      .title-1 {
+        margin-top: 8px;
+        font-size: 24px;
+        font-weight: 500;
+        color: #daa785;
+      }
+
+      .title-3 {
+        margin-top: 10px;
+        font-size: 18px;
+        color: #6b5f5b;
+        line-height: 1.6;
+      }
+
+      .address {
+        margin-top: 15px;
+        font-size: 18px;
+        color: #8c7a75;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+
+        svg {
+          font-size: 22px;
+          color: #daa785;
+        }
+
+        span {
+          font-weight: 500;
+          color: black;
+        }
+      }
+
+      .form {
+        margin-top: 25px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        background: #fff;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+
+        .main-form {
+          input {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            border-bottom: 2px solid #b8a79f;
+            outline: none;
+            background: transparent;
+            transition: border 0.3s ease;
+
+            &:focus {
+              border-bottom: 2px solid #daa785;
+            }
+          }
+        }
+      }
+
+      button {
+        margin-top: 20px;
+        padding: 14px 25px;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        background-color: #daa785;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0px 4px 8px rgba(218, 167, 133, 0.3);
+
+        &:hover {
+          background-color: #c78a66;
+          box-shadow: 0px 6px 12px rgba(218, 167, 133, 0.4);
+        }
+      }
+    }
+  }
+}

@@ -19,7 +19,7 @@ const NavBar = () => {
       >
         <div className="logo">Aivy Beauty</div>
         <Link
-          style={{ textDecoration: "none", color: "black" }}
+          // style={{ textDecoration: "none", color: "black" }}
           to={"/"}
           className={`page ${location.pathname === "/" ? "active" : ""}`}
           onClick={() => SetActivePage("home")}
@@ -27,7 +27,6 @@ const NavBar = () => {
           HomePage{" "}
         </Link>
         <Link
-          style={{ textDecoration: "none", color: "black" }}
           to={"/about"}
           className={`page ${location.pathname === "/about" ? "active" : ""}`}
           onClick={() => SetActivePage("about")}
@@ -38,14 +37,23 @@ const NavBar = () => {
           className={`page ${activePgae === "service" ? "active" : ""}`}
           onClick={() => SetActivePage("service")}
         >
-          Our Services
+          Price List
         </div>
         <div
-          className={` page ${activePgae === "contact" ? "active" : ""}`}
+          className={`page ${activePgae === "gallery" ? "active" : ""}`}
+          onClick={() => SetActivePage("gallery")}
+        >
+          Gallery
+        </div>
+        <Link
+          to={"/contact"}
+          className={` page ${
+            location.pathname === "/contact" ? "active" : ""
+          }`}
           onClick={() => SetActivePage("contact")}
         >
           Get in Touch{" "}
-        </div>
+        </Link>
         <div className="book">
           <Link
             style={{ textDecoration: "none", color: "black" }}
