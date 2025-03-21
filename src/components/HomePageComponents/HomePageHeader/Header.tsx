@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "../../../assets/logo.jpg";
 import "./Header.scss";
+import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <div className="header">
@@ -13,7 +14,9 @@ const Header = () => {
           leaves you feeling pampered and refreshed. Our skilled professionals
           are
         </div>
-        <div className="button">Book Onlie </div>
+        <Link style={{ textDecoration: "none" }} to={"/5-start-nail-booking"}>
+          <div className="button">Book Online </div>
+        </Link>
       </div>
       <div className="right">
         <img src={logo} />

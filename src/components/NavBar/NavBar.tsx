@@ -33,14 +33,17 @@ const NavBar = () => {
         >
           About{" "}
         </Link>
-        <div
-          className={`page ${activePgae === "service" ? "active" : ""}`}
-          onClick={() => SetActivePage("service")}
+        <Link
+          to={"/priceList"}
+          className={`page ${
+            location.pathname === "/priceList" ? "active" : ""
+          }`}
+          onClick={() => SetActivePage("priceList")}
         >
           Price List
-        </div>
+        </Link>
         <div
-          className={`page ${activePgae === "gallery" ? "active" : ""}`}
+          className={`page ${location.pathname === "/gallery" ? "active" : ""}`}
           onClick={() => SetActivePage("gallery")}
         >
           Gallery

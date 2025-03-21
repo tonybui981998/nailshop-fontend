@@ -1,0 +1,144 @@
+.customerReport {
+  background: url("../../../assets/bg_review.png") no-repeat center;
+  background-size: cover;
+  position: relative;
+  padding: 75px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  // margin-bottom: 80px;
+  background-color: #f9f9f9;
+  .report-main {
+    z-index: 2;
+    width: 80%;
+    color: #fff;
+    padding: 30px;
+    .customerReport__title {
+      font-size: 30px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+
+    .report {
+      padding: 20px;
+      border-radius: 12px;
+      transition: all 0.3s ease-in-out;
+      margin: 10px 0;
+      .report__name {
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 10px;
+      }
+      .report__comment {
+        font-size: 18px;
+        margin: 10px 0;
+        padding: 20px;
+        width: 80%;
+        margin: auto;
+      }
+      .report__avatar {
+        margin-top: 15px;
+        img {
+          width: 135px;
+          height: 125px;
+          border-radius: 50%;
+          border: 2px solid #fff;
+          object-fit: cover;
+        }
+      }
+    }
+
+    // Dots Customization
+    .react-multi-carousel-dot-list {
+      bottom: -20px !important;
+
+      .react-multi-carousel-dot {
+        background: rgba(255, 255, 255, 0.5);
+        width: 10px;
+        height: 10px;
+        margin: 0 5px;
+        border-radius: 50%;
+        transition: background 0.3s ease;
+
+        &--active {
+          background: #fff;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 950px) {
+  .customerReport {
+    background: url("../../../assets/bg_review.png") no-repeat center;
+    background-size: cover;
+    position: relative;
+    padding: 75px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 80px;
+    background-color: #f9f9f9;
+    .report-main {
+      z-index: 2;
+      width: 95%;
+      color: #fff;
+      padding: 25px;
+
+      .customerReport__title {
+        font-size: 30px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+      }
+
+      .report {
+        padding: 20px;
+        border-radius: 12px;
+        transition: all 0.3s ease-in-out;
+        margin: 10px 0;
+        .report__name {
+          font-size: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+        .report__comment {
+          font-size: 18px;
+          margin: 10px 0;
+          padding: 20px;
+          width: 100%;
+          margin: auto;
+        }
+        .report__avatar {
+          margin-top: 15px;
+          img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            object-fit: cover;
+          }
+        }
+      }
+
+      // Dots Customization
+      .react-multi-carousel-dot-list {
+        bottom: -20px !important;
+
+        .react-multi-carousel-dot {
+          background: rgba(255, 255, 255, 0.5);
+          width: 10px;
+          height: 10px;
+          margin: 0 5px;
+          border-radius: 50%;
+
+          &--active {
+            background: #fff;
+          }
+        }
+      }
+    }
+  }
+}

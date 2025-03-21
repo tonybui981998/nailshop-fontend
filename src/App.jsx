@@ -11,6 +11,7 @@ import BookingConfirmation from "./components/pages/BookinPage/BookingConfirmati
 import HomePage from "./components/pages/HomePage/HomePage";
 import AboutUs from "./components/pages/AboutUsPage/AboutUs";
 import ContacUs from "./components/pages/Contact-US/ContacUs";
+import PriceList from "./components/pages/\bGalleryPage/PriceList";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<ContacUs />} />
+          <Route path="/priceList" element={<PriceList />} />
           <Route path="/5-start-nail-booking" element={<BookingOption />} />
           <Route
             path="/5-start-nail-booking-menu"

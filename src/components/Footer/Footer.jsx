@@ -8,6 +8,7 @@ import { FaInstagramSquare } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa";
 import { GrCaretNext } from "react-icons/gr";
 import "./Footer.scss";
+import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div className="footer">
@@ -39,9 +40,13 @@ const Footer = () => {
           <div className="icon">
             <FaFacebook />
           </div>
-          <div className="icon">
+          <a
+            style={{ color: "white" }}
+            href="https://www.instagram.com/aivybeauty_nz/"
+            className="icon"
+          >
             <FaInstagramSquare />
-          </div>
+          </a>
           <div className="icon">
             <FaTiktok />
           </div>
