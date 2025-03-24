@@ -187,5 +187,50 @@ const lashBrowMenu = {
     },
   ],
 };
+const nailImages = [
+  { url: gallery6, category: "Nails", title: "French Tips" },
+  { url: gallery6, category: "Nails", title: "Glitter Ombre" },
+  { url: gallery6, category: "Nails", title: "Marble Effect" },
+  { url: gallery6, category: "Nails", title: "Chrome Nails" },
+  { url: gallery6, category: "Nails", title: "Natural Nude" },
+  { url: gallery6, category: "Nails", title: "Pastel Matte" },
+  { url: gallery6, category: "Nails", title: "Floral Art" },
+  { url: gallery6, category: "Nails", title: "Gold Foil Design" },
+  { url: gallery6, category: "Nails", title: "Matte Burgundy" },
+  { url: gallery6, category: "Nails", title: "Neon Tips" },
+];
+const lashImages = [
+  { url: gallery6, category: "Lash", title: "Classic Lash Set" },
+  { url: gallery6, category: "Lash", title: "Hybrid Lashes" },
+  { url: gallery6, category: "Lash", title: "Volume Lashes" },
+  { url: gallery6, category: "Lash", title: "Wispy Lash" },
+  { url: gallery6, category: "Lash", title: "Mega Volume" },
+  { url: gallery6, category: "Lash", title: "Natural Lash Look" },
+  { url: gallery6, category: "Lash", title: "Cat Eye Style" },
+  { url: gallery6, category: "Lash", title: "Doll Eye Style" },
+  { url: gallery6, category: "Lash", title: "Russian Volume" },
+  { url: gallery6, category: "Lash", title: "Angel Lash Set" },
+];
 
-export { customerFeedbacks, galleryImages, nailMenu, lashBrowMenu };
+const browImages = [
+  { url: gallery6, category: "Brow", title: "Brow Shaping" },
+  { url: gallery6, category: "Brow", title: "Brow Tint" },
+  { url: gallery6, category: "Brow", title: "Microblading" },
+  { url: gallery6, category: "Brow", title: "Ombre Brows" },
+  { url: gallery6, category: "Brow", title: "Feather Brows" },
+  { url: gallery6, category: "Brow", title: "Brow Lamination" },
+  { url: gallery6, category: "Brow", title: "Henna Brows" },
+  { url: gallery6, category: "Brow", title: "Soft Arch" },
+  { url: gallery6, category: "Brow", title: "Defined Brows" },
+  { url: gallery6, category: "Brow", title: "Natural Look" },
+];
+
+export {
+  customerFeedbacks,
+  galleryImages,
+  nailMenu,
+  lashBrowMenu,
+  nailImages,
+  lashImages,
+  browImages,
+};

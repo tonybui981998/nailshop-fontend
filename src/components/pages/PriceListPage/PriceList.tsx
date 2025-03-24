@@ -2,9 +2,9 @@ import React from "react";
 import NavBar from "../../NavBar/NavBar";
 import Footer from "../../Footer/Footer";
 import "./GalleryPage.scss";
-import Guarantee from "../../GalleryConent/Guarantee/Guarantee";
-import NailService from "../../GalleryConent/OurNailService/NailService";
-import OurLastBrown from "../../GalleryConent/OurLashBrown/OurLastBrown";
+import Guarantee from "../../PriceListConent/Guarantee/Guarantee";
+import OurLastBrown from "../../PriceListConent/OurLashBrown/OurLastBrown";
+import NailService from "../../PriceListConent/OurNailService/NailService";
 
 const PriceList = () => {
   return (

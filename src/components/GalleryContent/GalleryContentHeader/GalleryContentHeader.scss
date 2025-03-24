@@ -1,0 +1,94 @@
+.GalleryContentHeader {
+  width: 90%;
+  margin: auto;
+  height: fit-content;
+
+  .main-content {
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .title {
+      text-align: center;
+      .tittle-header {
+        font-size: 30px;
+        color: #daa785;
+        font-weight: 550;
+      }
+      p {
+        padding-top: 20px;
+        width: 80%;
+        margin: auto;
+        font-size: 22px;
+        color: rgb(117, 109, 109);
+      }
+    }
+    .button-Display {
+      display: flex;
+      margin-top: 50px;
+      cursor: pointer;
+      .button {
+        border: 1px solid black;
+        margin-left: 30px;
+        padding: 15px 60px;
+        border-radius: 15px;
+        font-size: 18px;
+      }
+    }
+    .active {
+      background-color: yellow;
+    }
+    .Image-display {
+      width: 90%;
+    }
+  }
+}
+
+@media (max-width: 680px) {
+  .GalleryContentHeader {
+    width: 90%;
+    margin: auto;
+    height: fit-content;
+    .main-content {
+      padding-top: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .title {
+        text-align: center;
+        .tittle-header {
+          font-size: 30px;
+          color: #daa785;
+          font-weight: 550;
+        }
+        p {
+          padding-top: 20px;
+          width: 80%;
+          margin: auto;
+          font-size: 22px;
+          color: rgb(117, 109, 109);
+        }
+      }
+      .button-Display {
+        display: flex;
+        flex-direction: column;
+        //  margin-top: 50px;
+        cursor: pointer;
+        .button {
+          border: 1px solid black;
+          // margin-left: 30px;
+          margin-top: 20px;
+          padding: 15px 60px;
+          border-radius: 15px;
+          font-size: 18px;
+        }
+      }
+      .active {
+        background-color: yellow;
+      }
+      .Image-display {
+        width: 90%;
+      }
+    }
+  }
+}

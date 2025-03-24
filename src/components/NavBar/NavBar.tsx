@@ -42,12 +42,13 @@ const NavBar = () => {
         >
           Price List
         </Link>
-        <div
+        <Link
+          to={"/gallery"}
           className={`page ${location.pathname === "/gallery" ? "active" : ""}`}
           onClick={() => SetActivePage("gallery")}
         >
           Gallery
-        </div>
+        </Link>
         <Link
           to={"/contact"}
           className={` page ${

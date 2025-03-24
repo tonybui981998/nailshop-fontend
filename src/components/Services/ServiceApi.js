@@ -48,5 +48,22 @@ const getBookingTime = async () => {
     console.log(e);
   }
 };
+// send customerFeedBack
+const getCustomerFeedBack = async (data) => {
+  const apiFeedBack = import.meta.env.VITE_API_CUSTOMERFEEDBACK;
+  try {
+    const respond = await axios.post(`${apiKey}${apiFeedBack}`, data);
+    console.log("check respond", respond);
+    return respond.data;
+  } catch (e) {
+    console.log(e);
+  }
+};
 
-export { getMenu, getAllStaff, createBooking, getBookingTime };
+export {
+  getMenu,
+  getAllStaff,
+  createBooking,
+  getBookingTime,
+  getCustomerFeedBack,
+};
