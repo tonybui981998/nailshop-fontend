@@ -1,51 +1,86 @@
+// Variables
+$primary-color: #007bff;
+$light-bg: #fafafa;
+$border-color: #ddd;
+$hover-color: #f2f2f2;
+$input-border: #ccc;
+$font-family: "Roboto", sans-serif;
+
 .client-information {
   width: 80%;
   margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: $font-family;
+
   .booking-header {
     margin-top: 40px;
-    font-size: 25px;
-    font-weight: 550;
+    font-size: 26px;
+    font-weight: 600;
+    color: black;
   }
+
   .booking-content {
-    border: 1px solid rgb(217, 204, 204);
     width: 400px;
     margin-top: 40px;
+    padding: 30px 20px;
+    background-color: $light-bg;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
 
     .infor {
+      width: 100%;
       margin-bottom: 20px;
-      width: 80%;
-      margin: auto;
-      margin-top: 20px;
-      input {
-        width: 90%;
-        margin-top: 10px;
-        padding: 8px;
+
+      label {
         font-size: 16px;
+        font-weight: 500;
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid $input-border;
+        font-size: 16px;
+        outline: none;
+        transition: border-color 0.3s ease;
+
+        &:focus {
+          border-color: $primary-color;
+        }
       }
     }
+
     .infor1 {
-      margin-top: 40px;
+      margin-top: 10px;
     }
+
     .button {
       margin-top: 20px;
-      margin-bottom: 30px;
-      width: 80%;
+      width: 100%;
       display: flex;
       justify-content: center;
+
       button {
-        padding: 10px 35px;
-        border-radius: 15px;
-        background-color: transparent;
+        padding: 12px 40px;
+        border-radius: 25px;
+        background-color: black;
+        color: white;
+        border: none;
         font-size: 18px;
+        font-weight: 500;
         cursor: pointer;
+        transition: background-color 0.3s ease;
+
         &:hover {
-          background-color: rgb(239, 229, 229);
+          background-color: adjust($primary-color, -10%);
         }
       }
     }

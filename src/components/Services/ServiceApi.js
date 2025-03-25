@@ -53,7 +53,16 @@ const getCustomerFeedBack = async (data) => {
   const apiFeedBack = import.meta.env.VITE_API_CUSTOMERFEEDBACK;
   try {
     const respond = await axios.post(`${apiKey}${apiFeedBack}`, data);
-    console.log("check respond", respond);
+    return respond.data;
+  } catch (e) {
+    console.log(e);
+  }
+};
+// create customer required
+const getCustomerRequired = async (data) => {
+  const apiRequired = import.meta.env.VITE_API_CUSTOMERREQUIRED;
+  try {
+    const respond = await axios.post(`${apiKey}${apiRequired}`, data);
     return respond.data;
   } catch (e) {
     console.log(e);
@@ -66,4 +75,5 @@ export {
   createBooking,
   getBookingTime,
   getCustomerFeedBack,
+  getCustomerRequired,
 };

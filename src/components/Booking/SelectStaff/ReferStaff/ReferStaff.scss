@@ -1,3 +1,7 @@
+$primary-color: #007bff;
+$light-border: #dbd0d0;
+$hover-bg: #e6f0ff;
+$font-family: "Roboto", sans-serif;
 .referStaff {
   display: flex;
   width: 70%;
@@ -15,6 +19,12 @@
       align-items: center;
       padding: 25px 0 25px 10px;
       cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: scale(1.02);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
       img {
         width: 90px;
         height: 75px;
@@ -28,7 +38,9 @@
       }
     }
     .addbackground {
-      border: 3px solid blue;
+      border: 2px solid $primary-color;
+      background-color: $hover-bg;
+      box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
     }
   }
   .right-side {
@@ -57,7 +69,8 @@
       }
     }
     .line {
-      border: 1px solid rgb(219, 208, 208);
+      border: 1px solid $light-border;
+      margin: 15px 0;
     }
     .client-Service {
       padding: 10px;
@@ -71,7 +84,7 @@
     }
     .button {
       justify-content: center;
-      // border: 1px solid red;
+
       margin-left: 10px;
       button {
         width: 150px;
@@ -106,7 +119,12 @@
         display: flex;
         align-items: center;
         padding: 25px 0 25px 10px;
+        transition: all 0.3s ease;
         cursor: pointer;
+        &:hover {
+          transform: scale(1.02);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
         img {
           width: 90px;
           height: 75px;
@@ -120,7 +138,9 @@
         }
       }
       .addbackground {
-        border: 3px solid blue;
+        border: 2px solid $primary-color;
+        background-color: $hover-bg;
+        box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
       }
     }
     .right-side {
@@ -149,7 +169,8 @@
         }
       }
       .line {
-        border: 1px solid rgb(219, 208, 208);
+        border: 1px solid $light-border;
+        margin: 15px 0;
       }
       .client-Service {
         padding: 10px;
@@ -204,6 +225,12 @@
         width: 70%;
         padding: 25px 0 25px 10px;
         cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          transform: scale(1.02);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
         img {
           width: 90px;
           height: 75px;
@@ -217,7 +244,9 @@
         }
       }
       .addbackground {
-        border: 3px solid blue;
+        border: 2px solid $primary-color;
+        background-color: $hover-bg;
+        box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
       }
     }
     .right-side {
@@ -246,7 +275,8 @@
         }
       }
       .line {
-        border: 1px solid rgb(219, 208, 208);
+        border: 1px solid $light-border;
+        margin: 15px 0;
       }
       .client-Service {
         padding: 10px;
@@ -302,6 +332,12 @@
         width: 95%;
         padding: 25px 0 25px 10px;
         cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          transform: scale(1.02);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
         img {
           width: 90px;
           height: 75px;
@@ -315,7 +351,9 @@
         }
       }
       .addbackground {
-        border: 3px solid blue;
+        border: 2px solid $primary-color;
+        background-color: $hover-bg;
+        box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
       }
     }
     .right-side {
@@ -344,7 +382,8 @@
         }
       }
       .line {
-        border: 1px solid rgb(219, 208, 208);
+        border: 1px solid $light-border;
+        margin: 15px 0;
       }
       .client-Service {
         padding: 10px;
