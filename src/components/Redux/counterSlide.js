@@ -92,15 +92,11 @@ const counterSlice = createSlice({
     // generate time slot
     handleGenerateTimeSlot: (state) => {
       if (!state.clientSelectDate || !state.clientSelectStaff) {
-        console.log("missing date or staff selection");
         return;
       }
 
-      // 🛑 Chuyển ngày khách chọn sang định dạng chuẩn YYYY-MM-DD để so sánh
       const selectedDate = dayjs(state.clientSelectDate).format("YYYY-MM-DD");
-      console.log("Selected Date:", selectedDate);
 
-      // 🛑 Tìm ngày làm việc của nhân viên trong staffScheduleDtos
       const checkStaffWorkingDay =
         state.clientSelectStaff.staffScheduleDtos.find(
           (s) => s.dayOfWeek === dayjs(state.clientSelectDate).format("dddd")
@@ -108,18 +104,16 @@ const counterSlice = createSlice({
 
       if (!checkStaffWorkingDay) {
         state.StaffTimeSlot = [];
-        console.log("No working schedule found for this staff on this date.");
+
         return;
       }
 
-      // 🛑 Lấy giờ bắt đầu & kết thúc của nhân viên từ staffScheduleDtos
       const startHour = parseInt(
         checkStaffWorkingDay.startTime.split(":")[0],
         10
       );
-      const endHour = parseInt(checkStaffWorkingDay.endTime.split(":")[0], 10); // Đổi dấu `;` thành `:`
+      const endHour = parseInt(checkStaffWorkingDay.endTime.split(":")[0], 10);
 
-      // 🛑 Tạo danh sách slot thời gian 15 phút
       let getCurrentTime = dayjs().hour(startHour).minute(0);
       const timeSlot = [];
 
@@ -128,9 +122,6 @@ const counterSlice = createSlice({
         getCurrentTime = getCurrentTime.add(15, "minute");
       }
 
-      console.log("Generated Time Slots:", timeSlot);
-
-      // 🛑 **Lọc danh sách booking từ database theo ngày & nhân viên**
       const bookedSlots = state.allBookingTime
         .filter(
           (booking) =>
@@ -142,16 +133,11 @@ const counterSlice = createSlice({
           endTime: dayjs(booking.endTime, "HH:mm:ss").format("HH:mm"),
         }));
 
-      console.log("Booked Slots:", bookedSlots);
-
-      // 🛑 **Loại bỏ các slot đã bị đặt trước**
       state.StaffTimeSlot = timeSlot.filter((slot) => {
         return !bookedSlots.some(
           (booked) => slot >= booked.startTime && slot < booked.endTime
         );
       });
-
-      console.log("Available Slots:", state.StaffTimeSlot);
     },
 
     handleClientPickingTime: (state, action) => {

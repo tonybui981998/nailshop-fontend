@@ -3,6 +3,8 @@ import "./ClientInformation.scss";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { createBooking } from "../../../Services/ServiceApi";
+import dayjs from "dayjs";
+import { HubConnectionBuilder } from "@microsoft/signalr";
 
 const ClientInformation = () => {
   // get data from redux
@@ -20,13 +22,18 @@ const ClientInformation = () => {
     phone: "",
     email: "",
   });
+
   const BookingInfor = {
     bookingServices: clientSelectService.map((service) => ({
       selectedService: service.name,
+      duration: service.duration,
+      price: service.price,
     })),
+
     totalPrice: clientTotalPrice,
     staffId: clientSelectStaff.id,
-    bookingDate: clientSelectDate,
+    bookingDate: dayjs(clientSelectDate).format("YYYY-MM-DD"),
+
     startTime: clientPickingStartTime
       ? clientPickingStartTime + ":00"
       : "00:00:00",
@@ -43,11 +50,19 @@ const ClientInformation = () => {
     }
     return true;
   };
-  const submit = () => {
+  const submit = async () => {
     if (!validation()) return;
-    console.log("all infor", BookingInfor);
 
-    createBooking(BookingInfor);
+    await createBooking(BookingInfor);
+    const connection = new HubConnectionBuilder()
+      .withUrl("http://localhost:5215/bookingHub")
+      .withAutomaticReconnect()
+      .build();
+
+    connection.start().then(() => {
+      connection.invoke("SendNewBooking", BookingInfor);
+      console.log("🚀 SignalR Connected from Booking app");
+    });
   };
 
   return (

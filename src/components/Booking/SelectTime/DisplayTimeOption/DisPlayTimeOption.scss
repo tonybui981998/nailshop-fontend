@@ -1,151 +1,67 @@
 .main-option {
-  width: 90%;
-  height: 900px;
-  margin-top: 20px;
-  overflow: auto;
-  padding-right: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1.5rem 0;
+  width: 100%;
 
   .timeOption {
     display: flex;
     justify-content: space-between;
-    margin-top: 30px;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+
     .option-left {
-      cursor: pointer;
       display: flex;
       align-items: center;
-      border: 1px solid rgb(214, 206, 206);
-      border-radius: 50px;
-      width: 300px;
-      &:hover {
-        background-color: rgb(244, 238, 238);
-      }
-      .left-image {
-        img {
-          border-radius: 60px;
-          width: 70px;
-          height: 60px;
-          margin: 10px 0 10px 10px;
-        }
-      }
-      .fullname {
-        //  border: 1px solid red;
-        font-size: 21px;
-        font-weight: 550;
-        margin-right: 35px;
-      }
-      .icon {
-        font-size: 25px;
-      }
-    }
-    .option-right {
-      cursor: pointer !important;
-    }
-  }
-}
-// 1365
-@media (max-width: 1365px) {
-  .main-option {
-    width: 90%;
-    //height: 800px;
-    height: fit-content;
-    margin-top: 20px;
-    overflow: auto;
-    padding-right: 15px;
-    margin: auto;
+      gap: 1rem;
+      cursor: pointer;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      background-color: #fff;
+      transition: box-shadow 0.3s ease, transform 0.2s ease;
 
-    .timeOption {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 30px;
-      .option-left {
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        border: 1px solid rgb(214, 206, 206);
-        border-radius: 50px;
-        width: 300px;
-        &:hover {
-          background-color: rgb(244, 238, 238);
-        }
-        .left-image {
-          img {
-            border-radius: 60px;
-            width: 70px;
-            height: 60px;
-            margin: 10px 0 10px 10px;
-          }
-        }
-        .fullname {
-          //  border: 1px solid red;
-          font-size: 21px;
-          font-weight: 550;
-          margin-right: 35px;
-        }
-        .icon {
-          font-size: 25px;
-        }
+      &:hover {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        transform: translateY(-2px);
       }
-      .option-right {
-        cursor: pointer !important;
+
+      .left-image {
+        width: 48px;
+        height: 48px;
+        background-color: #eee;
+        border-radius: 50%;
+      }
+
+      .fullname {
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: #333;
+      }
+
+      .icon {
+        font-size: 1.4rem;
+        color: #007bff;
       }
     }
-    .display-time-wrapper {
-      display: flex;
-      //   justify-content: center;
-      width: 100%;
-    }
-  }
-}
-// 700
-@media (max-width: 700px) {
-  .main-option {
-    width: 90%;
-    height: 900px;
-    margin-top: 20px;
-    overflow: auto;
-    padding-right: 15px;
-    .timeOption {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      margin-top: 30px;
-      .option-left {
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        border: 1px solid rgb(214, 206, 206);
-        border-radius: 50px;
-        width: 300px;
-        &:hover {
-          background-color: rgb(244, 238, 238);
+
+    .option-right {
+      .MuiFormControl-root {
+        min-width: 220px;
+
+        .MuiInputBase-root {
+          border-radius: 10px;
+          padding: 6px 12px;
+          background-color: #fff;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
         }
-        .left-image {
-          img {
-            border-radius: 60px;
-            width: 70px;
-            height: 60px;
-            margin: 10px 0 10px 10px;
-          }
-        }
-        .fullname {
-          //  border: 1px solid red;
-          font-size: 21px;
-          font-weight: 550;
-          margin-right: 35px;
-        }
-        .icon {
-          font-size: 25px;
+
+        input {
+          font-size: 1rem;
         }
       }
-      .option-right {
-        width: 200px !important;
-        margin-top: 20px !important;
-      }
-    }
-    .display-time-wrapper {
-      display: flex;
-      //  justify-content: center;
-      width: 100%;
     }
   }
 }

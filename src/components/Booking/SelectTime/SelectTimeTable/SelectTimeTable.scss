@@ -1,15 +1,19 @@
 .SelectTimeTable {
   display: flex;
-  width: 80%;
-  margin: auto;
   justify-content: space-between;
-  height: fit-content;
-}
-@media (max-width: 1365px) {
-  .SelectTimeTable {
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    height: fit-content;
+  align-items: flex-start;
+  gap: 2rem;
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem 0;
+
+  // Left: DisPlayTimeOption
+  .main-option {
+    width: 50%;
+  }
+
+  // Right: DisPlayService
+  .displayService {
+    width: 50%;
   }
 }

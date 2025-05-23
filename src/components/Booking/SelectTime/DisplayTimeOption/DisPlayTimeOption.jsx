@@ -46,9 +46,7 @@ const DisPlayTimeOption = ({
       <div className="main-option">
         <div className="timeOption">
           <div className="option-left" onClick={() => openModel()}>
-            <div className="left-image">
-              <img src={clientSelectStaff.image} />
-            </div>
+            <div className="left-image"></div>
             <div className="fullname">{clientSelectStaff.fullName}</div>
             <div className="icon">
               <GiBodySwapping />

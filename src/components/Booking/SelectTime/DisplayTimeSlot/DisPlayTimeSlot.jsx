@@ -11,13 +11,6 @@ const DisPlayTimeSlot = ({
   clientSelectStaff,
   clientSelectDate,
 }) => {
-  console.log("check in time slot", clientPickingStartTime, serviceEndTime);
-  console.log(
-    "check from time slot",
-    allBookingTime,
-    clientSelectStaff,
-    clientSelectDate
-  );
   return (
     <div className="displayTimeShot">
       <div className="make">

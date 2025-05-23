@@ -1,58 +1,51 @@
 .displayTimeShot {
-  margin-top: 30px;
+  width: 100%;
+  margin-top: 1.5rem;
+
   .make {
-    .displaytime {
-      border: 1px solid rgb(218, 213, 213);
-      margin-bottom: 20px;
-      height: 50px;
-      align-items: center;
-      display: flex;
-      cursor: pointer;
-      &:hover {
-        background-color: rgb(253, 248, 248);
-      }
-      .time-display {
-        margin-left: 20px;
-        font-size: 18px;
-        font-weight: 550;
-      }
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+  }
+
+  .displaytime {
+    padding: 0.8rem 1rem;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    background-color: #fff;
+    font-size: 1rem;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+
+    &:hover {
+      background-color: #f0f4ff;
+      border-color: #007bff;
     }
-    .background {
-      background-color: rgb(253, 248, 248);
+
+    &.background {
+      background-color: #007bff;
+      color: #fff;
+      border-color: #007bff;
+    }
+
+    .time-display {
+      font-weight: 500;
     }
   }
-}
-@media (max-width: 1365px) {
-  .displayTimeShot {
-    margin-top: 45px;
-    display: flex;
-    .make {
-      display: flex;
-      flex-wrap: wrap;
-      margin-left: 20px;
-      margin-bottom: -100px;
 
-      .displaytime {
-        border: 1px solid rgb(218, 213, 213);
-        margin-bottom: 20px;
-        height: 65px;
-        width: 80px;
-        border-radius: 60px;
-        margin-left: 45px;
-        margin-bottom: 30px;
-        cursor: pointer;
+  .message {
+    font-size: 1.05rem;
+    color: #888;
+    text-align: center;
+    margin-top: 2rem;
+  }
 
-        &:hover {
-          background-color: rgb(253, 248, 248);
-        }
-        .time-display {
-          font-size: 18px;
-          font-weight: 550;
-        }
-      }
-      .background {
-        background-color: rgb(253, 248, 248);
-      }
-    }
+  .icon {
+    text-align: center;
+    font-size: 2rem;
+    color: #ff6b6b;
+    margin-top: 0.5rem;
   }
 }

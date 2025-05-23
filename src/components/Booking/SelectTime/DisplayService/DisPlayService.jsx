@@ -2,7 +2,8 @@ import dayjs from "dayjs";
 import React from "react";
 import { SlCalender } from "react-icons/sl";
 import "./DisPlayService.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const DisPlayService = ({
   clientSelectDate,
@@ -12,7 +13,29 @@ const DisPlayService = ({
   clientPickingStartTime,
   serviceEndTime,
 }) => {
+  const navigate = useNavigate();
   const convertDate = dayjs(clientSelectDate).format("dddd, DD MMM");
+  const validation = () => {
+    if (!clientSelectDate) {
+      toast.warn("please slect the date");
+      return false;
+    }
+    if (!clientPickingStartTime) {
+      toast.warn("please slect the start time");
+      return false;
+    }
+    if (!serviceEndTime) {
+      toast.warn("please check the start time");
+      return false;
+    }
+    return true;
+  };
+  const bookingInfor = () => {
+    const check = validation();
+    if (check) {
+      navigate("/Booking-confirm");
+    }
+  };
 
   return (
     <div className="displayService">
@@ -45,9 +68,9 @@ const DisPlayService = ({
       </div>
       <div className="total-Time">Finish : {serviceEndTime} mins</div>
       <div className="total-Time">Total Price : ${clientTotalPrice} </div>
-      <Link className="button" to={"/Booking-confirm"}>
+      <div className="button" onClick={() => bookingInfor()}>
         <button>Book</button>
-      </Link>
+      </div>
     </div>
   );
 };

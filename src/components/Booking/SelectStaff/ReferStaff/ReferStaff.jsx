@@ -29,9 +29,7 @@ const ReferStaff = () => {
   useEffect(() => {
     dispatch(handleGetStaffWorkingDay());
   }, [dispatch, allStaffs]);
-  useEffect(() => {
-    console.log("check staff pickle", clientSelectStaff);
-  }, [dispatch, clientSelectStaff]);
+  useEffect(() => {}, [dispatch, clientSelectStaff]);
   const override = {
     display: "block",
     margin: "0 auto",
@@ -73,7 +71,6 @@ const ReferStaff = () => {
                       isSelected ? "addbackground" : ""
                     }`}
                   >
-                    <img src={staff.image} />
                     <div className="staff-name">{staff.fullName}</div>
                   </div>
                 );

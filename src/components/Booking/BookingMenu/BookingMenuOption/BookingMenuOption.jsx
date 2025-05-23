@@ -32,7 +32,6 @@ const BookingMenuOption = () => {
   };
   // validaion
   const validationService = () => {
-    console.log("hello");
     if (clientSelectService.length === 0) {
       toast.warn("Please select any service to continue");
     } else {
