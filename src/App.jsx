@@ -14,6 +14,7 @@ import ContacUs from "./components/pages/Contact-US/ContacUs";
 
 import GalleryMainPage from "./components/pages/GalleryMainPage/GalleryMainPage";
 import PriceList from "./components/pages/\bPriceListPage/PriceList";
+import Voucher from "./components/pages/VoucherPage/Voucher";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
             element={<SelectTimePage />}
           />
           <Route path="/Booking-confirm" element={<BookingConfirmation />} />
+          <Route path="/Get-Voucher" element={<Voucher />} />
         </Routes>
       </Router>
       <ToastContainer

@@ -22,12 +22,17 @@ const BookingOption = () => {
 
         <div className="option1">
           <div className="title">Buy</div>
-          <div className="option-main">
-            <div className="card-title">Gift Card</div>
-            <div className="card-message">
-              Treat yourself or a friend future visit
+          <Link
+            style={{ textDecoration: "none", color: "black" }}
+            to={"/Get-Voucher"}
+          >
+            <div className="option-main">
+              <div className="card-title">Gift Card</div>
+              <div className="card-message">
+                Treat yourself or a friend future visit
+              </div>
             </div>
-          </div>
+          </Link>
         </div>
       </div>
     </div>

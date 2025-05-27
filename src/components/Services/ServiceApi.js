@@ -68,7 +68,20 @@ const getCustomerRequired = async (data) => {
     console.log(e);
   }
 };
-
+// buying voucher
+const getCustomerbuyVoucher = async (data) => {
+  const apibuiVoucher = import.meta.env.VITE_API_BUYINGVOUCHER;
+  try {
+    const respond = await axios.post(`${apiKey}${apibuiVoucher}`, data, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return respond.data;
+  } catch (e) {
+    console.log(e);
+  }
+};
 export {
   getMenu,
   getAllStaff,
@@ -76,4 +89,5 @@ export {
   getBookingTime,
   getCustomerFeedBack,
   getCustomerRequired,
+  getCustomerbuyVoucher,
 };
