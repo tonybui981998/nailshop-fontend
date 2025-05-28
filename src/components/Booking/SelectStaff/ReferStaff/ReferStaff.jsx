@@ -88,7 +88,7 @@ const ReferStaff = () => {
               </span>
               1234 yen cute mong mo
             </div>
-            <div className="line"></div>
+            <div className="line" style={{ display: "block" }}></div>
             <div>
               {clientSelectService.length > 0
                 ? clientSelectService.map((item, index) => {
@@ -100,7 +100,7 @@ const ReferStaff = () => {
                   })
                 : ""}
             </div>
-            <div className="line"></div>
+            <div className="line" style={{ display: "block" }}></div>
 
             <div className="client-Service">
               {clientSelectStaff.length === 0 ? (

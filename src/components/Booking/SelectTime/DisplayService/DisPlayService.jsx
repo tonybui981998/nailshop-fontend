@@ -45,12 +45,12 @@ const DisPlayService = ({
         Kindly double-check your location before booking. You can also{" "}
         <span> join the waitlist </span> if no slots are available.
       </div>
-      <div className="line"></div>
+      <div className="line" style={{ display: "block" }}></div>
       <div className="display-date">
         <SlCalender /> : {convertDate}
       </div>
       <div className="display-date"></div>
-      <div className="line"></div>
+      <div className="line" style={{ display: "block" }}></div>
       {clientSelectService &&
         clientSelectService.map((service, index) => {
           return (
@@ -59,7 +59,7 @@ const DisPlayService = ({
             </div>
           );
         })}
-      <div className="line"></div>
+      <div className="line" style={{ display: "block" }}></div>
       <div className="total-Time">
         Total Time : {clientTotalTimeService} mins
       </div>

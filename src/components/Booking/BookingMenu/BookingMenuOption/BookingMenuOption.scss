@@ -155,3 +155,72 @@
     }
   }
 }
+// 1200px
+@media (max-width: 1200px) {
+  .BookingMenuOption {
+    width: 95%;
+  }
+  .left-side .item .services .service-main .service-title .title {
+    font-size: 1rem;
+  }
+}
+// 980
+@media (max-width: 980px) {
+  .BookingMenuOption {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    width: 95%;
+
+    .left-side {
+      width: 90%;
+    }
+    .right-side {
+      width: 90%;
+    }
+  }
+  .item .services .service-main .service-title .title {
+  }
+}
+// 650
+@media (max-width: 650px) {
+  .BookingMenuOption {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    width: 98%;
+
+    .left-side {
+      width: 95%;
+    }
+    .right-side {
+      width: 95%;
+    }
+  }
+  .item .services .service-main .service-title .title {
+  }
+}
+// 500
+@media (max-width: 500px) {
+  .BookingMenuOption {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    width: 98%;
+
+    .left-side {
+      width: 97%;
+      .item {
+        .item-title {
+          font-size: 1.2rem;
+        }
+      }
+    }
+    .right-side {
+      width: 97%;
+      .message {
+        font-size: 1.1rem;
+      }
+    }
+  }
+}

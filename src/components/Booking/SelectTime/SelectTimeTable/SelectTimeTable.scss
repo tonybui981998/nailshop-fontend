@@ -17,3 +17,30 @@
     width: 50%;
   }
 }
+// 1500
+@media (max-width: 1500px) {
+  .SelectTimeTable {
+    width: 95%;
+    .main-option {
+      width: 60%;
+    }
+    .displayService {
+      width: 40%;
+    }
+  }
+}
+// 1100
+@media (max-width: 1110px) {
+  .SelectTimeTable {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    .main-option {
+      width: 90%;
+    }
+    .displayService {
+      width: 90%;
+    }
+  }
+}
