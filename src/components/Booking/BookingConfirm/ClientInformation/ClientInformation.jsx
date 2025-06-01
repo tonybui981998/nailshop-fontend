@@ -1,12 +1,23 @@
 import React, { useState } from "react";
 import "./ClientInformation.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { createBooking } from "../../../Services/ServiceApi";
 import dayjs from "dayjs";
 import { HubConnectionBuilder } from "@microsoft/signalr";
+import { useNavigate } from "react-router-dom";
+import HashLoader from "react-spinners/HashLoader";
+import { handleResetBookiingInfor } from "../../../Redux/counterSlide";
 
 const ClientInformation = () => {
+  let [loading, setLoading] = useState(false);
+
+  const override = {
+    display: "block",
+    margin: "0 auto",
+  };
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   // get data from redux
   const {
     clientSelectService,
@@ -52,8 +63,32 @@ const ClientInformation = () => {
   };
   const submit = async () => {
     if (!validation()) return;
+    setLoading(true);
+    const respond = await createBooking(BookingInfor);
 
-    await createBooking(BookingInfor);
+    if (respond.data === "Create success") {
+      setLoading(false);
+      dispatch(handleResetBookiingInfor());
+      toast.success(
+        "🎉 Booking successful! We’ve sent a confirmation to your email."
+      );
+      setFormData({
+        fullName: "",
+        phone: "",
+        email: "",
+      });
+
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
+    } else {
+      setLoading(false);
+      dispatch(handleResetBookiingInfor());
+      toast.error("Sorry something wrong ,please try again later");
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
+    }
     const connection = new HubConnectionBuilder()
       .withUrl("http://localhost:5215/bookingHub")
       .withAutomaticReconnect()
@@ -68,6 +103,16 @@ const ClientInformation = () => {
   return (
     <div className="client-information">
       <div className="booking-header">Booking Information</div>
+      {loading && (
+        <div className="overlay">
+          <HashLoader
+            color="#4f6edb"
+            loading={true}
+            size={80}
+            cssOverride={override}
+          />
+        </div>
+      )}
       <div className="booking-content">
         <div className="infor infor1">
           <label>Full Name:</label>

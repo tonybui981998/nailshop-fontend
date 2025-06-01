@@ -60,6 +60,13 @@ const counterSlice = createSlice({
         0
       );
     },
+    handleResetBookiingInfor: (state) => {
+      state.clientSelectDate = null;
+      state.clientTotalPrice = 0;
+      state.clientSelectService = [];
+      state.clientPickingStartTime = null;
+      state.serviceEndTime = null;
+    },
     handleGetStaffWorkingDay: (state) => {
       const getCurrentday = new Date().toLocaleDateString("en-US", {
         weekday: "long",
@@ -206,5 +213,6 @@ export const {
   handleGenerateTimeSlot,
   handleClientSelectDayStaff,
   handleClientPickingTime,
+  handleResetBookiingInfor,
 } = counterSlice.actions;
 export default counterSlice.reducer;
