@@ -1,8 +1,16 @@
 import React from "react";
 import "./BookingOption.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { handleResetBookiingInfor } from "../../Redux/counterSlide";
 
 const BookingOption = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const backtoHomePgae = () => {
+    dispatch(handleResetBookiingInfor());
+    navigate("/");
+  };
   return (
     <div className="bookingoption">
       <div className="option-menu">Choose an option</div>
