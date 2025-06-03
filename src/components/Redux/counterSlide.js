@@ -111,7 +111,6 @@ const counterSlice = createSlice({
 
       if (!checkStaffWorkingDay) {
         state.StaffTimeSlot = [];
-
         return;
       }
 
@@ -119,12 +118,29 @@ const counterSlice = createSlice({
         checkStaffWorkingDay.startTime.split(":")[0],
         10
       );
+      const startMinute = parseInt(
+        checkStaffWorkingDay.startTime.split(":")[1],
+        10
+      );
       const endHour = parseInt(checkStaffWorkingDay.endTime.split(":")[0], 10);
+      const endMinute = parseInt(
+        checkStaffWorkingDay.endTime.split(":")[1],
+        10
+      );
 
-      let getCurrentTime = dayjs().hour(startHour).minute(0);
+      const staffEndMinutes = endHour * 60 + endMinute;
+      const serviceDuration = state.clientTotalTimeService;
+
+      let getCurrentTime = dayjs().hour(startHour).minute(startMinute);
       const timeSlot = [];
 
-      while (getCurrentTime.hour() < endHour) {
+      while (true) {
+        const currentMinutes =
+          getCurrentTime.hour() * 60 + getCurrentTime.minute();
+        const endingMinutes = currentMinutes + serviceDuration;
+
+        if (endingMinutes > staffEndMinutes) break;
+
         timeSlot.push(getCurrentTime.format("HH:mm"));
         getCurrentTime = getCurrentTime.add(15, "minute");
       }

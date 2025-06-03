@@ -36,6 +36,11 @@ const VoucherBody = () => {
       const respond = await getCustomerbuyVoucher(data);
       if (respond) {
         setLoading(false);
+        setformData({
+          userName: "",
+          email: "",
+          purchaseValue: "",
+        });
         if (respond.status === "success") {
           toast.success("Thank you for purchased");
         } else {

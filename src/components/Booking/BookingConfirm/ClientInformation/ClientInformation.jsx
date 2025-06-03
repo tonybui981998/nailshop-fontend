@@ -80,14 +80,14 @@ const ClientInformation = () => {
 
       setTimeout(() => {
         navigate("/");
-      }, 2000);
+      }, 2500);
     } else {
       setLoading(false);
       dispatch(handleResetBookiingInfor());
       toast.error("Sorry something wrong ,please try again later");
       setTimeout(() => {
         navigate("/");
-      }, 2000);
+      }, 2500);
     }
     const connection = new HubConnectionBuilder()
       .withUrl("http://localhost:5215/bookingHub")
