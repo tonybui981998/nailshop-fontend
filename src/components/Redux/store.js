@@ -6,19 +6,7 @@ import sessionStorage from "redux-persist/lib/storage/session";
 const persistConfig = {
   key: "root",
   storage: sessionStorage,
-  whitelist: [
-    "clientSelectService",
-    "clientTotalPrice",
-    "allStaffs",
-    "staffSchedules",
-    "clientSelectStaff",
-    "clientSelectDate",
-    "clientTotalTimeService",
-    "allBookingTime",
-    "clientPickingStartTime",
-    "clientSelectDate",
-    "serviceEndTime",
-  ],
+  whitelist: [],
 };
 const persistedReducer = persistReducer(persistConfig, counterReducer);
 const store = configureStore({

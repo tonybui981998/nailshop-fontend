@@ -3,6 +3,7 @@ import "./SelectTimeTable.scss";
 import DisPlayTimeOption from "../DisplayTimeOption/DisPlayTimeOption";
 import DisPlayService from "../DisplayService/DisPlayService";
 import { useDispatch, useSelector } from "react-redux";
+import { HubConnectionBuilder } from "@microsoft/signalr";
 import {
   handleClientSelectDate,
   handleClientSelectDayStaff,
@@ -10,7 +11,10 @@ import {
   handleGenerateTimeSlot,
   handleClientPickingTime,
   fetBookingTime,
+  fetStaff,
+  handleResetTimeSlot,
 } from "../../../Redux/counterSlide";
+import { toast } from "react-toastify";
 
 //import DisPlayTimeSlot from "../DisplayTimeSlot/DisPlayTimeSlot";
 
@@ -51,6 +55,33 @@ const SelectTimeTable = () => {
   }, [dispatch, clientSelectDate, clientSelectStaff]);
   useEffect(() => {
     dispatch(fetBookingTime());
+  }, []);
+  useEffect(() => {
+    const connection = new HubConnectionBuilder()
+      .withUrl("http://localhost:5215/bookingHub")
+      .withAutomaticReconnect()
+      .build();
+
+    const startConnection = async () => {
+      try {
+        await connection.start();
+
+        connection.on("Receivenewstaffinfor", async (bookingData) => {
+          dispatch(fetStaff());
+          futureStaff();
+          dispatch(handleChangeStaff(""));
+          dispatch(handleResetTimeSlot());
+        });
+      } catch (error) {
+        console.error("❌ SignalR connection failed:", error);
+      }
+    };
+
+    startConnection();
+
+    return () => {
+      connection.stop();
+    };
   }, []);
 
   return (

@@ -10,7 +10,6 @@ import { CiCircleMinus } from "react-icons/ci";
 import { SlLocationPin } from "react-icons/sl";
 import { handleSelectService } from "../../../Redux/counterSlide";
 import { useNavigate } from "react-router-dom";
-
 import { toast } from "react-toastify";
 
 import "./BookingMenuOption.scss";

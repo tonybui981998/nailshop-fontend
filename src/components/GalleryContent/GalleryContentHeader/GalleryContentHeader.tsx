@@ -33,17 +33,10 @@ const GalleryContentHeader = () => {
           >
             Lash
           </div>
-          <div
-            className={`button ${activeDisplay === "brown" ? "active" : ""}`}
-            onClick={() => setActiveDisplay("brown")}
-          >
-            Brown
-          </div>
         </div>
         <div className="Image-display">
           <div>{activeDisplay === "nails" ? <NailsDisplay /> : ""}</div>
           <div>{activeDisplay === "lash" ? <LashDisplay /> : ""}</div>
-          <div>{activeDisplay === "brown" ? <BrownDisplay /> : ""}</div>
         </div>
       </div>
     </div>

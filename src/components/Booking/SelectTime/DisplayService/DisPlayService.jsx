@@ -12,6 +12,7 @@ const DisPlayService = ({
   clientTotalPrice,
   clientPickingStartTime,
   serviceEndTime,
+  clientSelectStaff,
 }) => {
   const navigate = useNavigate();
   const convertDate = dayjs(clientSelectDate).format("dddd, DD MMM");
@@ -22,6 +23,10 @@ const DisPlayService = ({
     }
     if (!clientPickingStartTime) {
       toast.warn("please slect the start time");
+      return false;
+    }
+    if (!clientSelectStaff) {
+      toast.warn("Please select staff");
       return false;
     }
     if (!serviceEndTime) {

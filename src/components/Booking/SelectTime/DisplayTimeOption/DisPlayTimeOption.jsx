@@ -40,7 +40,7 @@ const DisPlayTimeOption = ({
     setSelectedDate(dayjs(date));
     handleDatePicker(dayjs(date));
   };
-
+  console.log("check staff", clientSelectStaff);
   return (
     <>
       <div className="main-option">

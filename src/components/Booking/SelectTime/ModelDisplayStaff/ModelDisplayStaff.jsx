@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import "./ModelDisplayStaff.scss";
+import { FaUser } from "react-icons/fa";
 
 const ModelDisplayStaff = ({
   staffSchedules,
@@ -17,7 +18,7 @@ const ModelDisplayStaff = ({
   useEffect(() => {
     futureStaff(clientSelectDate);
   }, [clientSelectDate]);
-
+  console.log("check date", clientSelectDate);
   return (
     <div className="ModelDisplayStaff">
       <div className="model-display">
@@ -37,7 +38,9 @@ const ModelDisplayStaff = ({
                   className="staff-display"
                   key={index}
                 >
-                  <img src={staff.image} />
+                  <div className="staff-icon">
+                    <FaUser size={50} />
+                  </div>
                   <div className="name">{staff.fullName}</div>
                 </div>
               );

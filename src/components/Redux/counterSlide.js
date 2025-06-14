@@ -41,6 +41,10 @@ const counterSlice = createSlice({
     allBookingTime: [],
   },
   reducers: {
+    handleResetTimeSlot: (state) => {
+      state.StaffTimeSlot = [];
+    },
+
     handleSelectService: (state, action) => {
       const selected = action.payload;
       const checkExist = state.clientSelectService.some(
@@ -71,17 +75,53 @@ const counterSlice = createSlice({
       const getCurrentday = new Date().toLocaleDateString("en-US", {
         weekday: "long",
       });
-      state.staffSchedules = state.allStaffs.filter((staff) =>
-        staff.staffScheduleDtos.some((s) => s.dayOfWeek === getCurrentday)
-      );
+      const currentDate = new Date().toISOString().split("T")[0];
+      state.staffSchedules = state.allStaffs.filter((staff) => {
+        if (staff.isActive === "available") {
+          const customStaff = staff.customerScheduleDtos?.some(
+            (s) => s.date.slice(0, 10) === currentDate && s.isDayOff !== true
+          );
+          if (customStaff) {
+            return true;
+          }
+          const isDayOf = staff.customerScheduleDtos?.some(
+            (s) => s.date.slice(0, 10) === currentDate && s.isDayOff === true
+          );
+          if (isDayOf) {
+            return false;
+          }
+          const staffSchedule = staff.staffScheduleDtos?.some(
+            (s) => s.dayOfWeek === getCurrentday
+          );
+          return staffSchedule;
+        }
+      });
     },
     // client select future date
     handleClientSelectDayStaff: (state, action) => {
       const getCurrentday = dayjs(action.payload);
       const selectedDay = getCurrentday.format("dddd");
-      state.staffSchedules = state.allStaffs.filter((staff) =>
-        staff.staffScheduleDtos.some((s) => s.dayOfWeek === selectedDay)
-      );
+      const currentDate = getCurrentday.format("YYYY-MM-DD");
+      state.staffSchedules = state.allStaffs.filter((staff) => {
+        if (staff.isActive === "available") {
+          const customStaff = staff.customerScheduleDtos?.some(
+            (s) => s.date.slice(0, 10) === currentDate && s.isDayOff !== true
+          );
+          if (customStaff) {
+            return true;
+          }
+          const hasisdayoff = staff.customerScheduleDtos?.some(
+            (s) => s.date.slice(0, 10) === currentDate && s.isDayOff === true
+          );
+          if (hasisdayoff) {
+            return false;
+          }
+          const staffSchedule = staff.staffScheduleDtos?.some(
+            (s) => s.dayOfWeek === selectedDay
+          );
+          return staffSchedule;
+        }
+      });
     },
     handleClientSelectStaff: (state, action) => {
       state.clientSelectStaff = action.payload;
@@ -98,40 +138,52 @@ const counterSlice = createSlice({
     },
     // generate time slot
     handleGenerateTimeSlot: (state) => {
-      if (!state.clientSelectDate || !state.clientSelectStaff) {
-        return;
-      }
+      if (!state.clientSelectDate || !state.clientSelectStaff) return;
 
-      const selectedDate = dayjs(state.clientSelectDate).format("YYYY-MM-DD");
+      const selectedDate = dayjs(state.clientSelectDate);
+      const selectedDateStr = selectedDate.format("YYYY-MM-DD");
+      const selectedDayName = selectedDate.format("dddd");
+      const staff = state.clientSelectStaff;
 
-      const checkStaffWorkingDay =
-        state.clientSelectStaff.staffScheduleDtos.find(
-          (s) => s.dayOfWeek === dayjs(state.clientSelectDate).format("dddd")
-        );
+      const customSchedule = staff.customerScheduleDtos?.find(
+        (s) => s.date.slice(0, 10) === selectedDateStr
+      );
 
-      if (!checkStaffWorkingDay) {
+      if (customSchedule?.isDayOff === true) {
         state.StaffTimeSlot = [];
         return;
       }
 
-      const startHour = parseInt(
-        checkStaffWorkingDay.startTime.split(":")[0],
-        10
-      );
-      const startMinute = parseInt(
-        checkStaffWorkingDay.startTime.split(":")[1],
-        10
-      );
-      const endHour = parseInt(checkStaffWorkingDay.endTime.split(":")[0], 10);
-      const endMinute = parseInt(
-        checkStaffWorkingDay.endTime.split(":")[1],
-        10
-      );
+      let startHour, startMinute, endHour, endMinute;
+
+      if (customSchedule && customSchedule.isDayOff === false) {
+        startHour = parseInt(customSchedule.startTime.split(":")[0], 10);
+        startMinute = parseInt(customSchedule.startTime.split(":")[1], 10);
+        endHour = parseInt(customSchedule.endTime.split(":")[0], 10);
+        endMinute = parseInt(customSchedule.endTime.split(":")[1], 10);
+      } else {
+        const defaultSchedule = staff.staffScheduleDtos?.find(
+          (s) => s.dayOfWeek === selectedDayName
+        );
+
+        if (!defaultSchedule) {
+          state.StaffTimeSlot = [];
+          return;
+        }
+
+        startHour = parseInt(defaultSchedule.startTime.split(":")[0], 10);
+        startMinute = parseInt(defaultSchedule.startTime.split(":")[1], 10);
+        endHour = parseInt(defaultSchedule.endTime.split(":")[0], 10);
+        endMinute = parseInt(defaultSchedule.endTime.split(":")[1], 10);
+      }
 
       const staffEndMinutes = endHour * 60 + endMinute;
       const serviceDuration = state.clientTotalTimeService;
 
-      let getCurrentTime = dayjs().hour(startHour).minute(startMinute);
+      let getCurrentTime = selectedDate
+        .hour(startHour)
+        .minute(startMinute)
+        .second(0);
       const timeSlot = [];
 
       while (true) {
@@ -148,8 +200,8 @@ const counterSlice = createSlice({
       const bookedSlots = state.allBookingTime
         .filter(
           (booking) =>
-            dayjs(booking.bookingDate).format("YYYY-MM-DD") === selectedDate &&
-            booking.staffId === state.clientSelectStaff.id
+            dayjs(booking.bookingDate).format("YYYY-MM-DD") ===
+              selectedDateStr && booking.staffId === staff.id
         )
         .map((booking) => ({
           startTime: dayjs(booking.startTime, "HH:mm:ss").format("HH:mm"),
@@ -230,5 +282,6 @@ export const {
   handleClientSelectDayStaff,
   handleClientPickingTime,
   handleResetBookiingInfor,
+  handleResetTimeSlot,
 } = counterSlice.actions;
 export default counterSlice.reducer;

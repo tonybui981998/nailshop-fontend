@@ -10,6 +10,7 @@ import "./ReferStaff.scss";
 import { SlLocationPin } from "react-icons/sl";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { HubConnectionBuilder } from "@microsoft/signalr";
 
 const ReferStaff = () => {
   const navigate = useNavigate();
@@ -35,6 +36,30 @@ const ReferStaff = () => {
     margin: "0 auto",
     borderColor: "red",
   };
+  useEffect(() => {
+    const connection = new HubConnectionBuilder()
+      .withUrl("http://localhost:5215/bookingHub")
+      .withAutomaticReconnect()
+      .build();
+
+    const startConnection = async () => {
+      try {
+        await connection.start();
+
+        connection.on("Receivenewstaffinfor", async (bookingData) => {
+          dispatch(fetStaff());
+        });
+      } catch (error) {
+        console.error("❌ SignalR connection failed:", error);
+      }
+    };
+
+    startConnection();
+
+    return () => {
+      connection.stop();
+    };
+  }, []);
   // validatiom
   const validation = () => {
     if (clientSelectStaff.length === 0) {

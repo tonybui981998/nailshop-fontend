@@ -4,6 +4,25 @@ import gallery3 from "../assets/gallery3.jpg";
 import gallery4 from "../assets/gallery4.jpg";
 import gallery5 from "../assets/gallery5.jpg";
 import gallery6 from "../assets/gallery6.jpeg";
+import nails1 from "../assets/nails1.jpg";
+import nails2 from "../assets/nails2.jpg";
+import nails3 from "../assets/nails3.jpg";
+import nails4 from "../assets/nails4.jpg";
+import nails5 from "../assets/nails5.jpg";
+import nails6 from "../assets/nails6.jpg";
+import nails7 from "../assets/nails7.png";
+import nails8 from "../assets/nails8.jpeg";
+import nails9 from "../assets/nails9.jpeg";
+import lash1 from "../assets/lash1.jpg";
+import lash2 from "../assets/lash2.jpg";
+import lash3 from "../assets/lash3.jpg";
+import lash4 from "../assets/lash4.jpg";
+import lash5 from "../assets/lash5.jpg";
+import lash6 from "../assets/lash6.jpg";
+import lash7 from "../assets/lash7.jpg";
+import lash8 from "../assets/lash8.jpg";
+import lash9 from "../assets/lash9.jpg";
+import lash10 from "../assets/lash10.jpg";
 
 const customerFeedbacks = [
   {
@@ -188,28 +207,28 @@ const lashBrowMenu = {
   ],
 };
 const nailImages = [
-  { url: gallery6, category: "Nails", title: "French Tips" },
-  { url: gallery6, category: "Nails", title: "Glitter Ombre" },
-  { url: gallery6, category: "Nails", title: "Marble Effect" },
-  { url: gallery6, category: "Nails", title: "Chrome Nails" },
-  { url: gallery6, category: "Nails", title: "Natural Nude" },
-  { url: gallery6, category: "Nails", title: "Pastel Matte" },
-  { url: gallery6, category: "Nails", title: "Floral Art" },
-  { url: gallery6, category: "Nails", title: "Gold Foil Design" },
-  { url: gallery6, category: "Nails", title: "Matte Burgundy" },
-  { url: gallery6, category: "Nails", title: "Neon Tips" },
+  { url: gallery1, category: "Nails", title: "French Tips" },
+  { url: nails1, category: "Nails", title: "Glitter Ombre" },
+  { url: nails2, category: "Nails", title: "Marble Effect" },
+  { url: nails3, category: "Nails", title: "Chrome Nails" },
+  { url: nails4, category: "Nails", title: "Natural Nude" },
+  { url: nails5, category: "Nails", title: "Pastel Matte" },
+  { url: nails6, category: "Nails", title: "Floral Art" },
+  { url: nails7, category: "Nails", title: "Gold Foil Design" },
+  { url: nails8, category: "Nails", title: "Matte Burgundy" },
+  { url: nails9, category: "Nails", title: "Neon Tips" },
 ];
 const lashImages = [
-  { url: gallery6, category: "Lash", title: "Classic Lash Set" },
-  { url: gallery6, category: "Lash", title: "Hybrid Lashes" },
-  { url: gallery6, category: "Lash", title: "Volume Lashes" },
-  { url: gallery6, category: "Lash", title: "Wispy Lash" },
-  { url: gallery6, category: "Lash", title: "Mega Volume" },
-  { url: gallery6, category: "Lash", title: "Natural Lash Look" },
-  { url: gallery6, category: "Lash", title: "Cat Eye Style" },
-  { url: gallery6, category: "Lash", title: "Doll Eye Style" },
-  { url: gallery6, category: "Lash", title: "Russian Volume" },
-  { url: gallery6, category: "Lash", title: "Angel Lash Set" },
+  { url: lash1, category: "Lash", title: "Classic Lash Set" },
+  { url: lash2, category: "Lash", title: "Hybrid Lashes" },
+  { url: lash3, category: "Lash", title: "Volume Lashes" },
+  { url: lash4, category: "Lash", title: "Wispy Lash" },
+  { url: lash5, category: "Lash", title: "Mega Volume" },
+  { url: lash6, category: "Lash", title: "Natural Lash Look" },
+  { url: lash7, category: "Lash", title: "Cat Eye Style" },
+  { url: lash8, category: "Lash", title: "Doll Eye Style" },
+  { url: lash9, category: "Lash", title: "Russian Volume" },
+  { url: lash10, category: "Lash", title: "Angel Lash Set" },
 ];
 
 const browImages = [

@@ -19,7 +19,6 @@ const NavBar = () => {
       >
         <div className="logo">Aivy Beauty</div>
         <Link
-          // style={{ textDecoration: "none", color: "black" }}
           to={"/"}
           className={`page ${location.pathname === "/" ? "active" : ""}`}
           onClick={() => SetActivePage("home")}
@@ -58,15 +57,15 @@ const NavBar = () => {
         >
           Get in Touch{" "}
         </Link>
-        <div className="book">
-          <Link
-            style={{ textDecoration: "none", color: "black" }}
-            to={"/5-start-nail-booking"}
-          >
-            {" "}
-            Book an Appointment{" "}
-          </Link>
-        </div>
+
+        <Link
+          className="book"
+          style={{ textDecoration: "none", color: "black" }}
+          to={"/5-start-nail-booking"}
+        >
+          {" "}
+          Book an Appointment{" "}
+        </Link>
       </div>
       <div className="line"></div>
     </div>

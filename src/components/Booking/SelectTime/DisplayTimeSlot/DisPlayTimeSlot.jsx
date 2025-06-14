@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./DisPlayTimeSlot.scss";
 import { MdCancelPresentation } from "react-icons/md";
+import { HubConnectionBuilder } from "@microsoft/signalr";
 
 const DisPlayTimeSlot = ({
   StaffTimeSlot,

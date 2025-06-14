@@ -43,7 +43,9 @@ const BookingOption = () => {
           </Link>
         </div>
         <div className="cancel-container">
-          <div className="cancel-button">Cancel</div>
+          <div className="cancel-button" onClick={() => backtoHomePgae()}>
+            Cancel
+          </div>
         </div>
       </div>
     </div>
