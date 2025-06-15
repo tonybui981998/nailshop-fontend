@@ -54,7 +54,9 @@ const BookingMenuOption = () => {
   return (
     <div className="BookingMenuOption">
       <div className="left-side">
-        {allMenu &&
+        {!allMenu || allMenu.length === 0 ? (
+          <div className="loading-message">Loading services...</div>
+        ) : (
           allMenu.map((item, index) => {
             return (
               <div className="item" key={index}>
@@ -100,7 +102,8 @@ const BookingMenuOption = () => {
                   : ""}
               </div>
             );
-          })}
+          })
+        )}
       </div>
       <div className="right-side">
         <div className="message">
